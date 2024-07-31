@@ -1,15 +1,25 @@
 public class Empleado {
     private String nombre;
+    private String genero;
     private double salarioBase;
     private int horasTrabajadas;
-    private Departamento departamento;
+    private String departamento;
+    private double tarifaHora;
 
-    public Empleado(){}
-    public Empleado(String nombre, double salarioBase, int horasTrabajadas, Departamento departamento) {
+    public Empleado() {}
+
+    public Empleado(String nombre, String genero, double salarioBase, int horasTrabajadas, String departamento, double tarifaHora) {
         this.nombre = nombre;
+        this.genero = genero;
         this.salarioBase = salarioBase;
         this.horasTrabajadas = horasTrabajadas;
-        this.departamento=departamento;
+        this.departamento = departamento;
+        this.tarifaHora = tarifaHora;
+    }
+
+    
+    protected Empleado(String nombre, String genero, double salarioBase, int horasTrabajadas, String departamento) {
+        this(nombre, genero, salarioBase, horasTrabajadas, departamento, 0);
     }
     public void validarSalarioyHoras() {
     	if (salarioBase <= 0) {
