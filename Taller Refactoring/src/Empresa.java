@@ -5,11 +5,7 @@ public class Empresa {
     private List<Empleado> empleados;
 
     public Empresa() {
-        incializarEmpleados();
-    }
-    //Estoy manejando la refacotizacion en cuando hay empleados existentes
-    public Empresa(List<Empleado> empleadosExistentes){
-        this.empleados = empleadosExistentes; 
+        empleados = new ArrayList<>();
     }
 
     public void contratarEmpleado(Empleado empleado) {
@@ -18,9 +14,6 @@ public class Empresa {
 
     public void despedirEmpleado(Empleado empleado) {
         empleados.remove(empleado);
-    }
-    public void incializarEmpleados(){
-        empleados = new ArrayList<>();
     }
 
     public List<Empleado> obtenerEmpleadosPorHorasTrabajadasaPartirDe(int horas) {
