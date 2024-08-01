@@ -1,13 +1,13 @@
 public class Empleado {
     private String nombre;
+    private String genero;
     private double salarioBase;
     private int horasTrabajadas;
-<<<<<<< HEAD
-    private String departamento;
+    private Departamento departamento;
     private double tarifaHora;
-    private String genero;
     
-    public Empleado(){}
+    
+   
     
     public Empleado(String nombre, double salarioBase, int horasTrabajadas, double tarifaHora, String departamento, String genero) {
         this.nombre = nombre;
@@ -16,17 +16,9 @@ public class Empleado {
         this.tarifaHora = tarifaHora;
         this.departamento = departamento;
         this.genero = genero;
-=======
-    private Departamento departamento;
-
-    public Empleado(){}
-    public Empleado(String nombre, double salarioBase, int horasTrabajadas, Departamento departamento) {
-        this.nombre = nombre;
-        this.salarioBase = salarioBase;
-        this.horasTrabajadas = horasTrabajadas;
-        this.departamento=departamento;
->>>>>>> f2a9498f5358471f872a815ece29c16047afa6cd
     }
+
+ 
     public void validarSalarioyHoras() {
     	if (salarioBase <= 0) {
             throw new IllegalArgumentException("El salario debe ser mayor o igual a 0");
