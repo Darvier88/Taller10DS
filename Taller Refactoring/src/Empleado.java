@@ -2,6 +2,7 @@ public class Empleado {
     private String nombre;
     private double salarioBase;
     private int horasTrabajadas;
+<<<<<<< HEAD
     private String departamento;
     private double tarifaHora;
     private String genero;
@@ -15,35 +16,36 @@ public class Empleado {
         this.tarifaHora = tarifaHora;
         this.departamento = departamento;
         this.genero = genero;
-    }
+=======
+    private Departamento departamento;
 
-    public double calcularSalario() {
-        double salarioTotal = salarioBase;
-        if (salarioBase>0) {
-            if (horasTrabajadas >= 0) {
-                // Horas trabajadas normales = 40;
-                if (horasTrabajadas > 40) {
-                    salarioTotal += (horasTrabajadas - 40) * 50; // Pago de horas extra
-                }
-            }else {
-                throw new IllegalArgumentException("Las horas trabajadas deben ser mayor o igual a 0");
-            }
-        } else {
+    public Empleado(){}
+    public Empleado(String nombre, double salarioBase, int horasTrabajadas, Departamento departamento) {
+        this.nombre = nombre;
+        this.salarioBase = salarioBase;
+        this.horasTrabajadas = horasTrabajadas;
+        this.departamento=departamento;
+>>>>>>> f2a9498f5358471f872a815ece29c16047afa6cd
+    }
+    public void validarSalarioyHoras() {
+    	if (salarioBase <= 0) {
             throw new IllegalArgumentException("El salario debe ser mayor o igual a 0");
         }
-        switch (departamento) {
-            case "Sistemas":
-                salarioTotal += 20;
-                break;
-            case "Contabilidad":
-                salarioTotal += 10;
-                break;
-            default:
-                break;
+        if (horasTrabajadas < 0) {
+            throw new IllegalArgumentException("Las horas trabajadas deben ser mayor o igual a 0");
         }
-        return salarioTotal;
     }
-
+    private double calcularPagoHorasExtra() {
+        if (horasTrabajadas > 40) {
+            return (horasTrabajadas - 40) * 50;
+        }
+        return 0;
+    }
+    public double calcularSalario() {
+        validarSalarioyHoras();
+        return salarioBase + calcularPagoHorasExtra() + departamento.calcularBono();
+    }
+    
     public String getNombre() {
         return nombre;
     }
@@ -71,21 +73,21 @@ public class Empleado {
         this.horasTrabajadas = horasTrabajadas;
     }
 
-    public double getTarifaHora() {
-        return tarifaHora;
-    }
-
-    public void setTarifaHora(double tarifaHora) {
-        this.tarifaHora = tarifaHora;
-    }
-
-    public String getDepartamento() {
+    public Departamento getDepartamento() {
         return departamento;
     }
 
-    public void setDepartamento(String departamento) {
+    public void setDepartamento(Departamento departamento) {
         this.departamento = departamento;
     }
-
+    
+    public void imprimirDetalles() {
+        System.out.println("Nombre: " + nombre);
+        System.out.println("Genero: " + getNombre());
+        System.out.println("Salario: " + salarioBase);
+        System.out.println("Horas trabajadas: " + horasTrabajadas);
+        System.out.println("Departamento: " + departamento);
+    }
     // Más metodos
+
 }
